@@ -2,9 +2,11 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class UserSeeder extends Seeder
 {
@@ -13,30 +15,17 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        //
-        DB::table('users')->insert([
-        [
-            'name' => 'sharrif',
-            'password' => md5("123456"),
-            'email' => '642021153@tsu.ac.th',
-            'address' => 'tsu',
-            'telephone' => '0981111111',
-        ],
-        [
-            'name' => 'bungkai',
-            'password' => md5("123456"),
-            'email' => '642021111@tsu.ac.th',
-            'address' => 'tsu',
-            'telephone' => '0982222222',
-        ],
-        [
-            'name' => 'haya',
-            'password' => md5("123456"),
-            'email' => '642022222@tsu.ac.th',
-            'address' => 'tsu',
-            'telephone' => '0983333333',
-        ]
-        ]
-    );
+        DB::table('users')->insert(
+            [
+                [
+                    "name" => "Pathaphi PK",
+                    "email" => "pathaphi.pk@gmail.com",
+                    "password" => Hash::make('123456'),
+                    "telephone" => "0640091297",
+                    "created_at" => Carbon::now(),
+                    "updated_at" => Carbon::now(),
+                ],
+            ]
+        );
     }
 }

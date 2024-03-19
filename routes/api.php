@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\Authcontroller;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Laravel\Sanctum\Sanctum;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,15 +17,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});
 
-//Public Route
-Route::post('register',[Authcontroller::class,'register']);
-Route::post('login',[Authcontroller::class,'login']);
-//Protect Route
-Route::group(['middleware' => 'auth:sanctum'],function(){
-    Route::post('logout',[Authcontroller::class,'logout']);
-    Route::resource('products',ProductController::class);
+Route::post('login', [AuthController::class, 'login']);
+Route::post('register', [AuthController::class, 'register']);
+
+
+Route::group([
+    'middleware' => 'auth:sanctum'
+], function () {
+    Route::post('logout', [AuthController::class, 'logout']);
+    Route::resource('product', ProductController::class); // ดูข้อมูลทั้งหมด
+    Route::get('product/{id}', [ProductController::class, 'show']); //ดูข้อมูลตาม ID
+    Route::post('product/add', [ProductController::class, 'store']); //เพิ่มข้อมูล
+    Route::put('product/update/{id}', [ProductController::class, 'update']); //อัพเดทข้อมูล
+    Route::delete('product/delete/{id}', [ProductController::class, 'destroy']); //ลบข้อมูล
+
 });

@@ -14,32 +14,36 @@ class ProductSeeder extends Seeder
      */
     public function run(): void
     {
-        //
         DB::table('products')->insert([
             [
-            'product_name' => 'iPhone 15',
-            'product_type' => 1,
-            'price' => 59000,
-            'created_at' => Carbon::now(),
+                "product_name" => "Iphone15",
+                "product_type" => 1,
+                "price" => 59000,
+                "created_at" => Carbon::now(),
+                "updated_at" => Carbon::now(),
             ],
             [
-                'product_name' => 'Samsung S30',
-                'product_type' => 1,
-                'price' => 40000,
-                'created_at' => Carbon::now(),
+                "product_name" => "Samsung S40",
+                "product_type" => 1,
+                "price" => 40000,
+                "created_at" => Carbon::now(),
+                "updated_at" => Carbon::now(),
             ],
             [
-                'product_name' => 'LG Smart TV',
-                'product_type' => 2,
-                'price' => 50900,
-                'created_at' => Carbon::now(),
+                "product_name" => "LG Smart TV",
+                "product_type" => 2,
+                "price" => 59000,
+                "created_at" => Carbon::now(),
+                "updated_at" => Carbon::now(),
             ],
             [
-                'product_name' => 'Apple TV',
-                'product_type' => 2,
-                'price' => 89000,
-                'created_at' => Carbon::now(),
+                "product_name" => "Samsung Smart TV",
+                "product_type" => 2,
+                "price" => 40900,
+                "created_at" => Carbon::now(),
+                "updated_at" => Carbon::now(),
             ],
+
         ]);
     }
 }
